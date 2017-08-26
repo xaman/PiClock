@@ -3,6 +3,7 @@
 import schedule
 import config
 import logging
+from model.crypto_id import CryptoId
 from provider.crypto_provider import CryptoProvider
 
 INFO_REFRESH_SECONDS = 5
@@ -26,8 +27,8 @@ def _configure_logging():
 
 
 def _create_providers():
-    providers.append(CryptoProvider("bitcoin", "EUR"))
-    providers.append(CryptoProvider("ethereum", "EUR"))
+    providers.append(CryptoProvider(CryptoId.ETHEREUM))
+    providers.append(CryptoProvider(CryptoId.BITCOIN))
     for provider in providers:
         provider.initialize()
 
