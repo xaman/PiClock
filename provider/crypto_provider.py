@@ -9,7 +9,7 @@ from provider import Provider
 
 
 class CryptoProvider(Provider):
-    _SCHEDULE_MINUTES = 10
+    _SCHEDULE_MINUTES = 1
     _ENDPOINT = "https://api.coinmarketcap.com/v1/ticker/{coin_id}/?convert={conversion}"
 
     def __init__(self, coin_id, conversion=CryptoConversion.EUR):
