@@ -2,7 +2,7 @@
 
 import schedule
 import config
-import logging
+import logging.config
 
 from formatter.crypto_formatter import CryptoFormatter
 from model.crypto_id import CryptoId
@@ -10,7 +10,7 @@ from provider.crypto_provider import CryptoProvider
 
 INFO_REFRESH_SECONDS = 5
 
-logger = logging.getLogger("root")
+logger = logging.getLogger()
 current_provider = 0
 providers = []
 
@@ -43,7 +43,7 @@ def _initialize_scheduler():
 
 def _show_information():
     for provider in providers:
-        print CryptoFormatter().format(provider.get_value())
+        logger.info(CryptoFormatter().format(provider.get_value()))
 
 
 if __name__ == '__main__':

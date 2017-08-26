@@ -1,4 +1,5 @@
 import schedule
+import logging
 
 from model.crypto_conversion import CryptoConversion
 from network.crypto_request import CryptoRequest
@@ -7,6 +8,8 @@ from provider import Provider
 
 class CryptoProvider(Provider):
     _SCHEDULE_MINUTES = 1
+
+    logger = logging.getLogger("data")
 
     def __init__(self, coin_id, conversion=CryptoConversion.EUR):
         self.coin_id = coin_id
@@ -29,4 +32,4 @@ class CryptoProvider(Provider):
 
     def _on_result(self, coin):
         self.coin = coin
-        print coin
+        self.logger.debug(coin)

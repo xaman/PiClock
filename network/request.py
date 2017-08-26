@@ -17,7 +17,7 @@ class Request(object):
         self.data = ''
         self.curl = pycurl.Curl()
         self.buffer = StringIO()
-        self.logger = logging.getLogger('request')
+        self.logger = logging.getLogger('data')
 
     def add_header(self, header):
         self.headers.append(header)
@@ -61,7 +61,7 @@ class Request(object):
 
     def _perform(self, is_post):
         self.curl.setopt(pycurl.VERBOSE, self.VERBOSE)
-        self.logger.info("Request: " + self.url)
+        self.logger.debug("Request: " + self.url)
         self.curl.setopt(pycurl.URL, self.url)
         self.curl.setopt(pycurl.SSL_VERIFYHOST, 0)
         self.curl.setopt(pycurl.SSL_VERIFYPEER, False)
