@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-
-
 class CryptoCoin(object):
     def __init__(self, json):
         self.id = json["id"]

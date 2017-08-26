@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-
-
 class Provider(object):
     def initialize(self):
         raise NotImplementedError("Class %s doesn't implement initialize()" % self.__class__.__name__)
