@@ -1,6 +1,6 @@
 import json
 
-from domain.crypto_coin import CryptoCoin
+from domain.crypto.coin import Coin
 from network.request import Request
 
 
@@ -14,5 +14,5 @@ class CryptoRequest(Request):
     def execute(self, callback):
         self.get()
         json_response = json.loads(self.response())[0]
-        coin = CryptoCoin(json_response)
+        coin = Coin(json_response)
         callback(coin)

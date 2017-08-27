@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class CryptoConversion(Enum):
+class Conversion(Enum):
     EUR = "EUR"
     USD = "USD"
     BTC = "BTC"

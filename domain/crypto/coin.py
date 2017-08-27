@@ -1,4 +1,4 @@
-class CryptoCoin(object):
+class Coin(object):
     def __init__(self, json):
         self.id = json["id"]
         self.name = json["name"]

@@ -1,6 +1,6 @@
 from enum import Enum
 
 
-class CryptoId(Enum):
+class CoinId(Enum):
     BITCOIN = "bitcoin"
     ETHEREUM = "ethereum"

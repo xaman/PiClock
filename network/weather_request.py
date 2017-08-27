@@ -1,8 +1,8 @@
 import json
 import urllib
 
-from domain.temperature_unit import TemperatureUnit
-from domain.weather import Weather
+from domain.weather.weather import Weather
+from domain.weather.temperature_unit import TemperatureUnit
 from network.request import Request
 
 

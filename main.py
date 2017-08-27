@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 
-import schedule
-import config
 import logging.config
 
-from domain.crypto_id import CryptoId
+import schedule
+
+import config
+from domain.crypto.coin_id import CoinId
 from provider.crypto_provider import CryptoProvider
 from provider.weather_provider import WeatherProvider
 
@@ -30,8 +31,8 @@ def _configure_logging():
 
 def _create_providers():
     providers.append(WeatherProvider("Madrid, ES"))
-    providers.append(CryptoProvider(CryptoId.ETHEREUM))
-    providers.append(CryptoProvider(CryptoId.BITCOIN))
+    providers.append(CryptoProvider(CoinId.ETHEREUM))
+    providers.append(CryptoProvider(CoinId.BITCOIN))
     for provider in providers:
         provider.initialize()
 

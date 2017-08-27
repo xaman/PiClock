@@ -1,8 +1,9 @@
-import schedule
 import logging
 
+import schedule
+
+from domain.crypto.conversion import Conversion
 from formatter.crypto_formatter import CryptoFormatter
-from domain.crypto_conversion import CryptoConversion
 from network.crypto_request import CryptoRequest
 from provider import Provider
 
@@ -13,7 +14,7 @@ class CryptoProvider(Provider):
 
     logger = logging.getLogger("data")
 
-    def __init__(self, coin_id, conversion=CryptoConversion.EUR):
+    def __init__(self, coin_id, conversion=Conversion.EUR):
         self.coin_id = coin_id
         self.conversion = conversion
         self.coin = None
