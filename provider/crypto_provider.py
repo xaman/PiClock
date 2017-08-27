@@ -15,28 +15,19 @@ class CryptoProvider(Provider):
     logger = logging.getLogger("data")
 
     def __init__(self, coin_id, conversion=Conversion.EUR):
+        super(CryptoProvider, self).__init__()
         self.coin_id = coin_id
         self.conversion = conversion
-        self.coin = None
         self.formatter = CryptoFormatter()
 
     def initialize(self):
-        self._request_coin()
-        schedule.every(self._SCHEDULE_MINUTES).minutes.do(self._request_coin)
+        self._request_data()
+        schedule.every(self._SCHEDULE_MINUTES).minutes.do(self._request_data)
 
-    def get_value(self):
-        return self.coin
-
-    def get_formatted_value(self):
-        return self.formatter.format(self.coin)
-
-    def is_empty(self):
-        return self.coin is None
-
-    def _request_coin(self):
+    def _request_data(self):
         request = CryptoRequest(self.coin_id, self.conversion)
         request.execute(self._on_result)
 
-    def _on_result(self, coin):
-        self.coin = coin
-        self.logger.debug(coin)
+    def _on_result(self, data):
+        self.data = data
+        self.logger.debug(data)

@@ -1,12 +1,16 @@
 class Provider(object):
+    def __init__(self):
+        self.data = None
+        self.formatter = None
+
     def initialize(self):
         raise NotImplementedError("Class %s doesn't implement initialize()" % self.__class__.__name__)
 
     def is_empty(self):
-        raise NotImplementedError("Class %s doesn't implement is_empty()" % self.__class__.__name__)
+        return self.data is None
 
     def get_value(self):
-        raise NotImplementedError("Class %s doesn't implement get_value()" % self.__class__.__name__)
+        return self.data
 
     def get_formatted_value(self):
-        raise NotImplementedError("Class %s doesn't implement get_formatted_value()" % self.__class__.__name__)
+        return self.formatter.format(self.data)
