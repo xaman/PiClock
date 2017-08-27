@@ -1,13 +1,15 @@
 import schedule
 import logging
 
-from model.crypto_conversion import CryptoConversion
+from formatter.crypto_formatter import CryptoFormatter
+from domain.crypto_conversion import CryptoConversion
 from network.crypto_request import CryptoRequest
 from provider import Provider
 
 
 class CryptoProvider(Provider):
-    _SCHEDULE_MINUTES = 1
+
+    _SCHEDULE_MINUTES = 15
 
     logger = logging.getLogger("data")
 
@@ -15,6 +17,7 @@ class CryptoProvider(Provider):
         self.coin_id = coin_id
         self.conversion = conversion
         self.coin = None
+        self.formatter = CryptoFormatter()
 
     def initialize(self):
         self._request_coin()
@@ -22,6 +25,9 @@ class CryptoProvider(Provider):
 
     def get_value(self):
         return self.coin
+
+    def get_formatted_value(self):
+        return self.formatter.format(self.coin)
 
     def is_empty(self):
         return self.coin is None

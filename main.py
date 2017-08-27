@@ -4,9 +4,9 @@ import schedule
 import config
 import logging.config
 
-from formatter.crypto_formatter import CryptoFormatter
-from model.crypto_id import CryptoId
+from domain.crypto_id import CryptoId
 from provider.crypto_provider import CryptoProvider
+from provider.weather_provider import WeatherProvider
 
 INFO_REFRESH_SECONDS = 5
 
@@ -29,6 +29,7 @@ def _configure_logging():
 
 
 def _create_providers():
+    providers.append(WeatherProvider("Madrid, ES"))
     providers.append(CryptoProvider(CryptoId.ETHEREUM))
     providers.append(CryptoProvider(CryptoId.BITCOIN))
     for provider in providers:
@@ -43,7 +44,7 @@ def _initialize_scheduler():
 
 def _show_information():
     for provider in providers:
-        logger.info(CryptoFormatter().format(provider.get_value()))
+        logger.info(provider.get_formatted_value())
 
 
 if __name__ == '__main__':

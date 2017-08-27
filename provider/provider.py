@@ -7,3 +7,6 @@ class Provider(object):
 
     def get_value(self):
         raise NotImplementedError("Class %s doesn't implement get_value()" % self.__class__.__name__)
+
+    def get_formatted_value(self):
+        raise NotImplementedError("Class %s doesn't implement get_formatted_value()" % self.__class__.__name__)

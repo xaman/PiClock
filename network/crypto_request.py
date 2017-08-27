@@ -1,6 +1,6 @@
 import json
 
-from model.crypto_coin import CryptoCoin
+from domain.crypto_coin import CryptoCoin
 from network.request import Request
 
 
