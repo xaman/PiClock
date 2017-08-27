@@ -9,7 +9,6 @@ from provider import Provider
 
 
 class CryptoProvider(Provider):
-
     _SCHEDULE_MINUTES = 15
 
     logger = logging.getLogger("data")

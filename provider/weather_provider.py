@@ -8,7 +8,6 @@ from provider import Provider
 
 
 class WeatherProvider(Provider):
-
     _SCHEDULE_MINUTES = 30
 
     logger = logging.getLogger("data")

@@ -8,6 +8,7 @@ import config
 from domain.crypto.coin_id import CoinId
 from provider.crypto_provider import CryptoProvider
 from provider.date_provider import DateProvider
+from provider.trends_provider import TrendsProvider
 from provider.weather_provider import WeatherProvider
 
 INFO_REFRESH_SECONDS = 5
@@ -18,9 +19,12 @@ providers = []
 
 
 def _main():
-    _configure_logging()
-    _create_providers()
-    _initialize_scheduler()
+    try:
+        _configure_logging()
+        _create_providers()
+        _initialize_scheduler()
+    except KeyboardInterrupt:
+        pass
 
 
 def _configure_logging():
@@ -35,6 +39,7 @@ def _create_providers():
     providers.append(WeatherProvider("Madrid, ES"))
     providers.append(CryptoProvider(CoinId.ETHEREUM))
     providers.append(CryptoProvider(CoinId.BITCOIN))
+    providers.append(TrendsProvider("23424950"))
     for provider in providers:
         provider.initialize()
 
