@@ -6,10 +6,9 @@ from formatter import Formatter
 
 class WeatherFormatter(Formatter):
     def format(self, value):
-        return "{temp}{unit}, {text}, in {city} ({country})".format(
+        return "{city}, {temp}{unit} {text}".format(
+            city=value.location.city,
             temp=value.condition.temp,
             unit=value.temperature_unit.value,
-            text=value.condition.text,
-            city=value.location.city,
-            country=value.location.country
+            text=value.condition.text
         )

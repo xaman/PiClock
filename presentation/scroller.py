@@ -1,51 +1,36 @@
+import scrollphathd
 import time
+from scrollphathd.fonts import font5x7
 
-import logging
-
-import thread
-
-from domain.crypto.coin_id import CoinId
-from provider.crypto_provider import CryptoProvider
-from provider.date_provider import DateProvider
-from provider.rss_provider import RSSProvider
-from provider.trends_provider import TrendsProvider
-from provider.weather_provider import WeatherProvider
+from presentation.scroller_presenter import ScrollerPresenter
 
 
 class Scroller(object):
-    logger = logging.getLogger()
-    pointer = -1
-    providers = []
+    _SCROLL_WAIT = 0.05
+    _PAUSE_AFTER_SCROLL = 2.0
+    _SCROLL_OFFSET = 17
+    _SCREEN_ROTATION = 180
 
     def __init__(self):
-        self._create_providers()
+        self._initialize_scroller()
+        scrollphathd.rotate(degrees=self._SCREEN_ROTATION)
 
-    def _create_providers(self):
-        self.providers.append(DateProvider())
-        self.providers.append(WeatherProvider("Madrid, ES"))
-        self.providers.append(CryptoProvider(CoinId.ETHEREUM))
-        self.providers.append(CryptoProvider(CoinId.BITCOIN))
-        self.providers.append(TrendsProvider("23424950"))
-        self.providers.append(RSSProvider("http://ep00.epimg.net/rss/elpais/portada.xml"))
-        for provider in self.providers:
-            provider.initialize()
+    def _initialize_scroller(self):
+        presenter = ScrollerPresenter(self)
+        presenter.initialize()
 
-    def initialize(self):
-        thread.start_new_thread(self._run, ())
+    def show_text(self, text):
+        length = scrollphathd.write_string(" %s " % text, font=font5x7, brightness=0.1)
+        for i in range(0, length - self._SCROLL_OFFSET):
+            self._scroll()
+        self._clear_screen()
+        time.sleep(self._PAUSE_AFTER_SCROLL)
 
-    def _run(self):
-        while True:
-            provider = self._next_provider()
-            print provider.get_formatted_value()
-            time.sleep(3)
+    def _scroll(self):
+        scrollphathd.show()
+        scrollphathd.scroll()
+        time.sleep(self._SCROLL_WAIT)
 
-    def _next_provider(self):
-        next = self.providers[self._next_pointer()]
-        while next.is_empty():
-            next = self.providers[self._next_pointer()]
-        return next
-
-    def _next_pointer(self):
-        value = self.pointer
-        self.pointer = value + 1 if value + 1 < len(self.providers) else 0
-        return self.pointer
+    def _clear_screen(self):
+        scrollphathd.clear()
+        scrollphathd.show()

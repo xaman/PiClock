@@ -4,7 +4,7 @@ from provider import Provider
 
 
 class DateProvider(Provider):
-    FORMAT = "%A, %d %B %Y"
+    FORMAT = "%a, %d %b '%y"
 
     def initialize(self):
         pass

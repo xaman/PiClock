@@ -8,7 +8,7 @@ class CryptoRequest(Request):
     _ENDPOINT = "https://api.coinmarketcap.com/v1/ticker/{coin_id}/?convert={conversion}"
 
     def __init__(self, coin_id, conversion):
-        url = self._ENDPOINT.format(coin_id=coin_id.name, conversion=conversion.name)
+        url = self._ENDPOINT.format(coin_id=coin_id, conversion=conversion)
         super(CryptoRequest, self).__init__(url)
 
     def execute(self, callback):

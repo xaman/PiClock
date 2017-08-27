@@ -19,7 +19,7 @@ scroller = None
 def _main():
     try:
         _configure_logging()
-        _initialize_scroller()
+        _create_scroller()
         _run_scheduler()
     except KeyboardInterrupt:
         pass
@@ -32,9 +32,8 @@ def _configure_logging():
         pass
 
 
-def _initialize_scroller():
+def _create_scroller():
     scroller = Scroller()
-    scroller.initialize()
 
 
 def _run_scheduler():

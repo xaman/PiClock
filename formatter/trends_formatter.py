@@ -3,7 +3,7 @@ from ascii_formatter import AsciiFormatter
 
 
 class TrendsFormatter(Formatter):
-    MAX_ITEMS = 10
+    MAX_ITEMS = 5
 
     ascii_formatter = AsciiFormatter()
 
