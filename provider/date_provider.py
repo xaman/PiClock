@@ -9,6 +9,9 @@ class DateProvider(Provider):
     def initialize(self):
         pass
 
+    def is_empty(self):
+        return False
+
     def get_value(self):
         return date.today().strftime(self.FORMAT)
 

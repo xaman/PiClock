@@ -3,27 +3,24 @@
 import logging.config
 
 import schedule
+import time
 
 import config
-from domain.crypto.coin_id import CoinId
-from provider.crypto_provider import CryptoProvider
-from provider.date_provider import DateProvider
-from provider.rss_provider import RSSProvider
-from provider.trends_provider import TrendsProvider
-from provider.weather_provider import WeatherProvider
+from presentation.scroller import Scroller
 
 INFO_REFRESH_SECONDS = 5
 
 logger = logging.getLogger()
 current_provider = 0
 providers = []
+scroller = None
 
 
 def _main():
     try:
         _configure_logging()
-        _create_providers()
-        _initialize_scheduler()
+        _initialize_scroller()
+        _run_scheduler()
     except KeyboardInterrupt:
         pass
 
@@ -35,26 +32,15 @@ def _configure_logging():
         pass
 
 
-def _create_providers():
-    providers.append(DateProvider())
-    providers.append(WeatherProvider("Madrid, ES"))
-    providers.append(CryptoProvider(CoinId.ETHEREUM))
-    providers.append(CryptoProvider(CoinId.BITCOIN))
-    providers.append(TrendsProvider("23424950"))
-    providers.append(RSSProvider("http://ep00.epimg.net/rss/elpais/portada.xml"))
-    for provider in providers:
-        provider.initialize()
+def _initialize_scroller():
+    scroller = Scroller()
+    scroller.initialize()
 
 
-def _initialize_scheduler():
-    schedule.every(INFO_REFRESH_SECONDS).seconds.do(_show_information)
+def _run_scheduler():
     while True:
         schedule.run_pending()
-
-
-def _show_information():
-    for provider in providers:
-        logger.info(provider.get_formatted_value())
+        time.sleep(1)
 
 
 if __name__ == '__main__':
