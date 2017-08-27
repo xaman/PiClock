@@ -1,5 +1,3 @@
-import logging
-
 import schedule
 
 from formatter.weather_formatter import WeatherFormatter
@@ -9,8 +7,6 @@ from provider import Provider
 
 class WeatherProvider(Provider):
     _SCHEDULE_MINUTES = 30
-
-    logger = logging.getLogger("data")
 
     def __init__(self, location_name):
         super(WeatherProvider, self).__init__()

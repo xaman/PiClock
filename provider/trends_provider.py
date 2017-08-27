@@ -1,10 +1,9 @@
-import tweepy
 import schedule
+import tweepy
 
 import credentials
-from domain.trends.trend import Trend
+from domain.trend import Trend
 from formatter.trends_formatter import TrendsFormatter
-
 from provider import Provider
 
 

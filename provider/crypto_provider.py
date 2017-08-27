@@ -1,5 +1,3 @@
-import logging
-
 import schedule
 
 from domain.crypto.conversion import Conversion
@@ -10,8 +8,6 @@ from provider import Provider
 
 class CryptoProvider(Provider):
     _SCHEDULE_MINUTES = 15
-
-    logger = logging.getLogger("data")
 
     def __init__(self, coin_id, conversion=Conversion.EUR):
         super(CryptoProvider, self).__init__()

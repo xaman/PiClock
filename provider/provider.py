@@ -1,4 +1,9 @@
+import logging
+
+
 class Provider(object):
+    logger = logging.getLogger("data")
+
     def __init__(self):
         self.data = None
         self.formatter = None

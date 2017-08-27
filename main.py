@@ -8,6 +8,7 @@ import config
 from domain.crypto.coin_id import CoinId
 from provider.crypto_provider import CryptoProvider
 from provider.date_provider import DateProvider
+from provider.rss_provider import RSSProvider
 from provider.trends_provider import TrendsProvider
 from provider.weather_provider import WeatherProvider
 
@@ -40,6 +41,7 @@ def _create_providers():
     providers.append(CryptoProvider(CoinId.ETHEREUM))
     providers.append(CryptoProvider(CoinId.BITCOIN))
     providers.append(TrendsProvider("23424950"))
+    providers.append(RSSProvider("http://ep00.epimg.net/rss/elpais/portada.xml"))
     for provider in providers:
         provider.initialize()
 
