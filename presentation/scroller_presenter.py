@@ -16,6 +16,7 @@ class ScrollerPresenter(object):
     logger = logging.getLogger()
     pointer = -1
     providers = []
+    show_clock = True
 
     def __init__(self, scroller):
         self.scroller = scroller
@@ -36,9 +37,19 @@ class ScrollerPresenter(object):
 
     def _run(self):
         while True:
-            provider = self._next_provider()
-            text = provider.get_formatted_value()
-            self.scroller.show_text(text)
+            if self.show_clock:
+                self._show_clock()
+            else:
+                self._show_provider()
+            self.show_clock = not self.show_clock
+
+    def _show_clock(self):
+        self.scroller.show_clock()
+
+    def _show_provider(self):
+        provider = self._next_provider()
+        text = provider.get_formatted_value()
+        self.scroller.show_text(text)
 
     def _next_provider(self):
         next = self.providers[self._next_pointer()]
