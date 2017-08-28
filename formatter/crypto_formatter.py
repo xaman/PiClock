@@ -1,9 +1,12 @@
+# -*- coding: UTF-8 -*-
 from formatter import Formatter
 
 
 class CryptoFormatter(Formatter):
+    _FORMAT = "{symbol} {price}\xC0 {percent}%"
+
     def format(self, value):
-        return "{symbol} {price}eur {percent}%".format(
+        return self._FORMAT.format(
             symbol=self._format_symbol(value.symbol),
             price=self._format_price(value.price_eur),
             percent=self._format_percentage(value.percent_change_24h))

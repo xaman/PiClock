@@ -2,12 +2,14 @@
 
 import logging.config
 
+import sys
 import schedule
 import time
 
 import config
 from presentation.scroller import Scroller
 
+DEFAULT_ENCODING = "utf-8"
 INFO_REFRESH_SECONDS = 5
 
 logger = logging.getLogger()
@@ -18,11 +20,17 @@ scroller = None
 
 def _main():
     try:
+        _configure_encoding()
         _configure_logging()
         _create_scroller()
         _run_scheduler()
     except KeyboardInterrupt:
         pass
+
+
+def _configure_encoding():
+    reload(sys)
+    sys.setdefaultencoding(DEFAULT_ENCODING)
 
 
 def _configure_logging():

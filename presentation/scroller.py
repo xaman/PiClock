@@ -6,8 +6,8 @@ from presentation.scroller_presenter import ScrollerPresenter
 
 
 class Scroller(object):
-    _SCROLL_WAIT = 0.05
-    _PAUSE_AFTER_SCROLL = 2.0
+    _SCROLL_WAIT = 0.02
+    _PAUSE_AFTER_SCROLL = 1.0
     _SCROLL_OFFSET = 17
     _SCREEN_ROTATION = 180
 
@@ -20,7 +20,7 @@ class Scroller(object):
         presenter.initialize()
 
     def show_text(self, text):
-        length = scrollphathd.write_string(" %s " % text, font=font5x7, brightness=0.1)
+        length = scrollphathd.write_string(" %s " % text, font=font5x7, brightness=0.2)
         for i in range(0, length - self._SCROLL_OFFSET):
             self._scroll()
         self._clear_screen()

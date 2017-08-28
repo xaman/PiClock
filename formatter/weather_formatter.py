@@ -5,8 +5,10 @@ from formatter import Formatter
 
 
 class WeatherFormatter(Formatter):
+    _FORMAT = "{city}, {temp}\xD4{unit} {text}"
+
     def format(self, value):
-        return "{city}, {temp}{unit} {text}".format(
+        return self._FORMAT.format(
             city=value.location.city,
             temp=value.condition.temp,
             unit=value.temperature_unit.value,
