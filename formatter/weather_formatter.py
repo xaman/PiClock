@@ -12,5 +12,5 @@ class WeatherFormatter(Formatter):
             city=value.location.city,
             temp=value.condition.temp,
             unit=value.temperature_unit.value,
-            text=value.condition.text
+            text=value.condition.text.lower()
         )
