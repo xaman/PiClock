@@ -15,10 +15,7 @@ class Scroller(object):
     _CLOCK_DURATION_SECONDS = 10
 
     def __init__(self):
-        self._initialize_scroller()
         scrollphathd.rotate(degrees=self._SCREEN_ROTATION)
-
-    def _initialize_scroller(self):
         presenter = ScrollerPresenter(self)
         presenter.initialize()
 
