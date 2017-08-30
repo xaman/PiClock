@@ -1,7 +1,6 @@
 import schedule
 
 from domain.crypto.conversion import Conversion
-from formatter.crypto_formatter import CryptoFormatter
 from network.crypto_request import CryptoRequest
 from provider import Provider
 
@@ -9,11 +8,11 @@ from provider import Provider
 class CryptoProvider(Provider):
     _SCHEDULE_MINUTES = 15
 
-    def __init__(self, coin_id, conversion=Conversion.EUR):
+    def __init__(self, coin_id, formatter, conversion=Conversion.EUR):
         super(CryptoProvider, self).__init__()
         self.coin_id = coin_id
+        self.formatter = formatter
         self.conversion = conversion
-        self.formatter = CryptoFormatter()
 
     def initialize(self):
         self._request_data()

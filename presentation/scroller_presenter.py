@@ -1,10 +1,12 @@
-import time
-
 import logging
 
 import thread
 
 from domain.crypto.coin_id import CoinId
+from formatter.crypto_formatter import CryptoFormatter
+from formatter.rss_formatter import RSSFormatter
+from formatter.trends_formatter import TrendsFormatter
+from formatter.weather_formatter import WeatherFormatter
 from provider.crypto_provider import CryptoProvider
 from provider.date_provider import DateProvider
 from provider.rss_provider import RSSProvider
@@ -24,11 +26,11 @@ class ScrollerPresenter(object):
 
     def _create_providers(self):
         self.providers.append(DateProvider())
-        self.providers.append(WeatherProvider("Madrid, ES"))
-        self.providers.append(CryptoProvider(CoinId.ETHEREUM))
-        self.providers.append(CryptoProvider(CoinId.BITCOIN))
-        self.providers.append(TrendsProvider("23424950"))
-        self.providers.append(RSSProvider("http://ep00.epimg.net/rss/tags/ultimas_noticias.xml"))
+        self.providers.append(WeatherProvider("Madrid, ES", WeatherFormatter()))
+        self.providers.append(CryptoProvider(CoinId.ETHEREUM, CryptoFormatter()))
+        self.providers.append(CryptoProvider(CoinId.BITCOIN, CryptoFormatter()))
+        self.providers.append(TrendsProvider("23424950", TrendsFormatter()))
+        self.providers.append(RSSProvider("http://ep00.epimg.net/rss/tags/ultimas_noticias.xml", RSSFormatter()))
         for provider in self.providers:
             provider.initialize()
 

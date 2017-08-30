@@ -1,6 +1,5 @@
 import schedule
 
-from formatter.weather_formatter import WeatherFormatter
 from network.weather_request import WeatherRequest
 from provider import Provider
 
@@ -8,10 +7,10 @@ from provider import Provider
 class WeatherProvider(Provider):
     _SCHEDULE_MINUTES = 30
 
-    def __init__(self, location_name):
+    def __init__(self, location_name, formatter):
         super(WeatherProvider, self).__init__()
         self.location_name = location_name
-        self.formatter = WeatherFormatter()
+        self.formatter = formatter
 
     def initialize(self):
         self._request_data()
