@@ -78,4 +78,7 @@ class Request(object):
             self.curl.setopt(pycurl.POSTFIELDSIZE, len(self.data))
         self.logger.debug("Headers: " + str(self.headers))
         self.curl.setopt(pycurl.HTTPHEADER, self.headers)
-        self.curl.perform()
+        try:
+            self.curl.perform()
+        except pycurl.error, e:
+            self.logger.error(str(e))

@@ -12,7 +12,10 @@ class CryptoRequest(Request):
         super(CryptoRequest, self).__init__(url)
 
     def execute(self, callback):
-        self.get()
-        json_response = json.loads(self.response())[0]
-        coin = Coin(json_response)
-        callback(coin)
+        response = self.get().response()
+        if response:
+            json_response = json.loads(self.response())[0]
+            coin = Coin(json_response)
+            callback(coin)
+        else:
+            callback(None)

@@ -7,7 +7,7 @@ from presentation.scroller_presenter import ScrollerPresenter
 
 
 class Scroller(object):
-    _BRIGHTNESS = 0.2
+    _BRIGHTNESS = 0.12
     _SCROLL_WAIT = 0.02
     _PAUSE_AFTER_SCROLL = 1.0
     _SCROLL_OFFSET = 17

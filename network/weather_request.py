@@ -23,7 +23,10 @@ class WeatherRequest(Request):
             unit=temperature_unit)})
 
     def execute(self, callback):
-        self.get()
-        json_response = json.loads(self.response())
-        weather = Weather(json_response["query"]["results"]["channel"])
-        callback(weather)
+        response = self.get().response()
+        if response:
+            json_response = json.loads(response)
+            weather = Weather(json_response["query"]["results"]["channel"])
+            callback(weather)
+        else:
+            callback(None)

@@ -47,15 +47,10 @@ class ScrollerPresenter(object):
         self.scroller.show_clock()
 
     def _show_provider(self):
-        provider = self._next_provider()
-        text = provider.get_formatted_value()
-        self.scroller.show_text(text)
-
-    def _next_provider(self):
-        next = self.providers[self._next_pointer()]
-        while next.is_empty():
-            next = self.providers[self._next_pointer()]
-        return next
+        provider = self.providers[self._next_pointer()]
+        if not provider.is_empty():
+            text = provider.get_formatted_value()
+            self.scroller.show_text(text)
 
     def _next_pointer(self):
         value = self.pointer
