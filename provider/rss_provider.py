@@ -5,7 +5,7 @@ from provider import Provider
 
 
 class RSSProvider(Provider):
-    _SCHEDULE_MINUTES = 15
+    _SCHEDULE_MINUTES = 10
 
     def __init__(self, url, formatter):
         super(RSSProvider, self).__init__()

@@ -7,7 +7,7 @@ from provider import Provider
 
 
 class TrendsProvider(Provider):
-    _SCHEDULE_MINUTES = 15
+    _SCHEDULE_MINUTES = 10
 
     def __init__(self, woeid, formatter):
         super(TrendsProvider, self).__init__()

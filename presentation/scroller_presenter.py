@@ -30,7 +30,7 @@ class ScrollerPresenter(object):
         self.providers.append(CryptoProvider(CoinId.ETHEREUM, CryptoFormatter()))
         self.providers.append(CryptoProvider(CoinId.BITCOIN, CryptoFormatter()))
         self.providers.append(TrendsProvider("23424950", TrendsFormatter()))
-        self.providers.append(RSSProvider("http://ep00.epimg.net/rss/tags/ultimas_noticias.xml", RSSFormatter()))
+        # self.providers.append(RSSProvider("http://ep00.epimg.net/rss/tags/ultimas_noticias.xml", RSSFormatter()))
         for provider in self.providers:
             provider.initialize()
 

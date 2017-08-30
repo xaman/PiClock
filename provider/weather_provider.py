@@ -5,7 +5,7 @@ from provider import Provider
 
 
 class WeatherProvider(Provider):
-    _SCHEDULE_MINUTES = 30
+    _SCHEDULE_MINUTES = 15
 
     def __init__(self, location_name, formatter):
         super(WeatherProvider, self).__init__()
