@@ -1,20 +1,20 @@
 import logging
-
 import thread
 
+from data.provider.crypto_provider import CryptoProvider
+from data.provider.ip_provider import IpProvider
+from data.provider.rss_provider import RssProvider
+from data.provider.trends_provider import TrendsProvider
+from data.provider.weather_provider import WeatherProvider
+
+from data.provider.date_provider import DateProvider
 from domain.crypto.coin_id import CoinId
-from formatter.crypto_formatter import CryptoFormatter
-from formatter.date_formatter import DateFormatter
-from formatter.ip_formatter import IpFormatter
-from formatter.rss_formatter import RssFormatter
-from formatter.trends_formatter import TrendsFormatter
-from formatter.weather_formatter import WeatherFormatter
-from provider.crypto_provider import CryptoProvider
-from provider.date_provider import DateProvider
-from provider.ip_provider import IpProvider
-from provider.rss_provider import RssProvider
-from provider.trends_provider import TrendsProvider
-from provider.weather_provider import WeatherProvider
+from presentation.formatter.crypto_formatter import CryptoFormatter
+from presentation.formatter.date_formatter import DateFormatter
+from presentation.formatter.ip_formatter import IpFormatter
+from presentation.formatter.rss_formatter import RssFormatter
+from presentation.formatter.trends_formatter import TrendsFormatter
+from presentation.formatter.weather_formatter import WeatherFormatter
 
 
 class ScrollerPresenter(object):

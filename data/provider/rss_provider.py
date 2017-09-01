@@ -1,6 +1,6 @@
 import schedule
 
-from network.rss_request import RssRequest
+from data.network.rss_request import RssRequest
 from provider import Provider
 
 

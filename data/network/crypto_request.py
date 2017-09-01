@@ -1,7 +1,7 @@
 import json
 
+from data.network.request import Request
 from domain.crypto.coin import Coin
-from network.request import Request
 
 
 class CryptoRequest(Request):

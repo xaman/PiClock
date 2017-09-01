@@ -1,7 +1,7 @@
 import schedule
 
+from data.network.crypto_request import CryptoRequest
 from domain.crypto.conversion import Conversion
-from network.crypto_request import CryptoRequest
 from provider import Provider
 
 

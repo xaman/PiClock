@@ -1,8 +1,9 @@
-import scrollphathd
 import time
+
+import scrollphathd
 from scrollphathd.fonts import font5x7
 
-from presentation import clock_font
+from presentation.font import clock_font
 from presentation.scroller_presenter import ScrollerPresenter
 
 

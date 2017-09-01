@@ -1,6 +1,6 @@
 import schedule
 
-from network.weather_request import WeatherRequest
+from data.network.weather_request import WeatherRequest
 from provider import Provider
 
 

@@ -1,6 +1,7 @@
-from domain.rss_item import RSSItem
-from network.request import Request
 from bs4 import BeautifulSoup
+
+from data.network.request import Request
+from domain.rss_item import RSSItem
 
 
 class RssRequest(Request):
