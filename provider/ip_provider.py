@@ -18,13 +18,10 @@ class IpProvider(Provider):
     def is_empty(self):
         return False
 
-    def get_value(self):
+    def get_data(self):
         ip = self._get_ip_address(self.interface)
         self.data = NetworkInterface(self.interface, ip)
         return self.formatter.format(self.data)
-
-    def get_formatted_value(self):
-        return self.get_value()
 
     def _get_ip_address(self, ifname):
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

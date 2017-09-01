@@ -14,8 +14,5 @@ class Provider(object):
     def is_empty(self):
         return self.data is None
 
-    def get_value(self):
-        return self.data
-
-    def get_formatted_value(self):
+    def get_data(self):
         return self.formatter.format(self.data)

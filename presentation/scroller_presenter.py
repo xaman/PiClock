@@ -58,7 +58,7 @@ class ScrollerPresenter(object):
     def _show_provider(self):
         provider = self.providers[self._next_pointer()]
         if not provider.is_empty():
-            text = provider.get_formatted_value()
+            text = provider.get_data()
             self.scroller.show_text(text)
 
     def _next_pointer(self):

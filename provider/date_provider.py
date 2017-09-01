@@ -14,8 +14,5 @@ class DateProvider(Provider):
     def is_empty(self):
         return False
 
-    def get_value(self):
+    def get_data(self):
         return self.formatter.format(date.today())
-
-    def get_formatted_value(self):
-        return self.get_value()
