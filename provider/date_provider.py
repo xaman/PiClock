@@ -4,7 +4,7 @@ from provider import Provider
 
 
 class DateProvider(Provider):
-    FORMAT = "%a, %d %b '%y"
+    _FORMAT = "%a, %d %b '%y"
 
     def initialize(self):
         pass
@@ -13,7 +13,7 @@ class DateProvider(Provider):
         return False
 
     def get_value(self):
-        return date.today().strftime(self.FORMAT)
+        return date.today().strftime(self._FORMAT)
 
     def get_formatted_value(self):
         return self.get_value()
