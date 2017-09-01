@@ -3,9 +3,9 @@ from network.request import Request
 from bs4 import BeautifulSoup
 
 
-class RSSRequest(Request):
+class RssRequest(Request):
     def __init__(self, url):
-        super(RSSRequest, self).__init__(url)
+        super(RssRequest, self).__init__(url)
 
     def execute(self, callback):
         response = self.get().response()

@@ -5,11 +5,11 @@ import struct
 from provider import Provider
 
 
-class IPProvider(Provider):
+class IpProvider(Provider):
     _FORMAT = "{interface} addr {ip}"
 
     def __init__(self, interface):
-        super(IPProvider, self).__init__()
+        super(IpProvider, self).__init__()
         self.interface = interface
 
     def initialize(self):

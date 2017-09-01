@@ -4,7 +4,7 @@ from formatter import Formatter
 from ascii_formatter import AsciiFormatter
 
 
-class RSSFormatter(Formatter):
+class RssFormatter(Formatter):
     ascii_formatter = AsciiFormatter()
 
     def format(self, value):
