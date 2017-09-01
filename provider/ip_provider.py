@@ -2,15 +2,15 @@ import socket
 import fcntl
 import struct
 
+from domain.network_interface import NetworkInterface
 from provider import Provider
 
 
 class IpProvider(Provider):
-    _FORMAT = "{interface} addr {ip}"
-
-    def __init__(self, interface):
+    def __init__(self, interface, formatter):
         super(IpProvider, self).__init__()
         self.interface = interface
+        self.formatter = formatter
 
     def initialize(self):
         pass
@@ -19,8 +19,9 @@ class IpProvider(Provider):
         return False
 
     def get_value(self):
-        self.data = self._get_ip_address(self.interface)
-        return self._FORMAT.format(interface=self.interface, ip=self.data)
+        ip = self._get_ip_address(self.interface)
+        self.data = NetworkInterface(self.interface, ip)
+        return self.formatter.format(self.data)
 
     def get_formatted_value(self):
         return self.get_value()
