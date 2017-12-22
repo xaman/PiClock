@@ -6,7 +6,7 @@ from provider import Provider
 
 
 class CryptoProvider(Provider):
-    _SCHEDULE_MINUTES = 15
+    _SCHEDULE_MINUTES = 5
 
     def __init__(self, coin_id, formatter, conversion=Conversion.EUR):
         super(CryptoProvider, self).__init__()
