@@ -1,4 +1,4 @@
-from formatter import Formatter
+from presentation.formatter.formatter import Formatter
 
 
 class IpFormatter(Formatter):

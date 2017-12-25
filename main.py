@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
 import logging.config
-
 import sys
-import schedule
 import time
 
+import schedule
+
 import config
-from presentation.scroller import Scroller
+from presentation.max7219.max7219_scroller import Max7219Scroller
 
 DEFAULT_ENCODING = "utf-8"
 INFO_REFRESH_SECONDS = 5
@@ -41,7 +41,7 @@ def _configure_logging():
 
 
 def _create_scroller():
-    scroller = Scroller()
+    scroller = Max7219Scroller()
 
 
 def _run_scheduler():

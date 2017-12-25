@@ -2,8 +2,8 @@
 from presentation.formatter.formatter import Formatter
 
 
-class CryptoFormatter(Formatter):
-    _FORMAT = "{symbol} {price}\xC0 {percent_day}% 1D {percent_week}% 1W"
+class Max7219CryptoFormatter(Formatter):
+    _FORMAT = "{symbol} {price}\xee {percent_day}% 1D {percent_week}% 1W"
 
     def format(self, value):
         return self._FORMAT.format(

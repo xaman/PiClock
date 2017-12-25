@@ -3,11 +3,13 @@ import time
 import scrollphathd
 from scrollphathd.fonts import font5x7
 
-from presentation.font import clock_font
+from presentation.base.scroller import Scroller
+from presentation.scrollphathd.font import clock_font
 from presentation.scroller_presenter import ScrollerPresenter
+from presentation.scrollphathd.phat_formatter_factory import PHatFormatterFactory
 
 
-class Scroller(object):
+class PHatScroller(Scroller):
     _BRIGHTNESS = 0.12
     _SCROLL_WAIT = 0.02
     _PAUSE_AFTER_SCROLL = 1.0
@@ -17,7 +19,7 @@ class Scroller(object):
 
     def __init__(self):
         scrollphathd.rotate(degrees=self._SCREEN_ROTATION)
-        presenter = ScrollerPresenter(self)
+        presenter = ScrollerPresenter(self, PHatFormatterFactory())
         presenter.initialize()
 
     def show_clock(self):

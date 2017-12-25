@@ -1,7 +1,5 @@
 # -*- coding: UTF-8 -*-
-
-
-from formatter import Formatter
+from presentation.formatter.formatter import Formatter
 
 
 class WeatherFormatter(Formatter):

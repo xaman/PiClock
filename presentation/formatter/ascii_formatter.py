@@ -1,6 +1,6 @@
 import unidecode
 
-from formatter import Formatter
+from presentation.formatter.formatter import Formatter
 
 
 class AsciiFormatter(Formatter):

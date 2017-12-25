@@ -1,5 +1,5 @@
-from formatter import Formatter
 from ascii_formatter import AsciiFormatter
+from presentation.formatter.formatter import Formatter
 
 
 class TrendsFormatter(Formatter):
