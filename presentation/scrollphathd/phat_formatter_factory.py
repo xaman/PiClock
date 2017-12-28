@@ -16,10 +16,10 @@ class PHatFormatterFactory (FormatterFactory):
         return AsciiFormatter()
 
     def get_rss_formatter(self):
-        return RssFormatter()
+        return RssFormatter(AsciiFormatter())
 
     def get_trends_formatter(self):
-        return TrendsFormatter()
+        return TrendsFormatter(AsciiFormatter())
 
     def get_date_formatter(self):
         return DateFormatter()

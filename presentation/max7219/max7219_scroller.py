@@ -8,6 +8,7 @@ from luma.core.legacy import text, show_message
 from luma.core.legacy.font import proportional, CP437_FONT, TINY_FONT, SINCLAIR_FONT, LCD_FONT
 
 from presentation.base.scroller import Scroller
+from presentation.formatter.ascii_formatter import AsciiFormatter
 from presentation.max7219.max7219_formatter_factory import Max7219FormatterFactory
 from presentation.scroller_presenter import ScrollerPresenter
 
@@ -38,4 +39,7 @@ class Max7219Scroller(Scroller):
             draw.text((1, -2), formatted_time, fill="white")
 
     def show_text(self, text):
-        show_message(self._device, text, fill="white", font=proportional(CP437_FONT))
+        try:
+            show_message(self._device, text, fill="white", font=proportional(CP437_FONT))
+        except IndexError:
+            print "[Max7219Scroller] Error showing text: " + AsciiFormatter().format(text)

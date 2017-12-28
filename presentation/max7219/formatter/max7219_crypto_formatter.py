@@ -13,7 +13,7 @@ class Max7219CryptoFormatter(Formatter):
             percent_week=self._format_percentage(value.percent_change_7d))
 
     def _format_symbol(self, symbol):
-        return symbol.lower().capitalize()
+        return symbol.upper()
 
     def _format_price(self, price):
         return "%.2f" % float(price)
